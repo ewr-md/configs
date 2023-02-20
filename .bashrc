@@ -1,34 +1,23 @@
-# .bashrc
+#
+# ~/.bashrc
+#
 
-# aliases
-alias dnf='sudo dnf -v'
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+PS1='[\u@\h \W]\$ '
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-export PATH
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
-# User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f "$rc" ]; then
-			. "$rc"
-		fi
-	done
-fi
-
-if [ -f ~/.bash_aliases ]; then
-. ~/.bash_aliases
-fi
-
-unset rc
+###############################
+#  ALIASES for bash commands  #
+###############################
+alias i='startx /usr/bin/i3'
+alias x='startx /usr/bin/xfce4-session'
+alias d='startx /usr/bin/dwm'
+alias v='nvim'
+alias snp='cd /home/eric/.local/share/nvim/plugged/vim-snippets/UltiSnips'
+alias ph='cd ~/Documents/research/ph/nonAdherence/'
+alias ls='exa --sort=type -lh'
+alias dl='youtube-dl -f best'
+alias mk='makepkg -sif'
+alias cv='cd ~/Documents/work/cv-resume'
