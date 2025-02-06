@@ -1,0 +1,59 @@
+
+---
+title: "lorem ipsum"
+
+output:
+  bookdown::html_document2:
+    keep_tex: true
+    toc: no
+    number_sections: no
+    
+bibliography: ../references/bib.bib 
+csl: ../references/ajrccm.csl
+---
+```{r setup, echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source(here::here("load_packages.R"))
+source(here::here("load_dataset.R"))
+```
+
+Eric W. Robbins, MD^1^,
+Bradley A. Maron, MD^2^,
+Katarina Zeder, MD, PhD^2^
+
+## Author affiliations
+^1^`r affil_ummc_pccm`
+
+^2^ `r affil_ihc`
+
+
+% ## Author Contributions
+% lorem ipsum
+
+% ## Funding / Sources of Support
+% lorem ipsum
+
+% ## Running Head
+% lorem ipsum
+
+% ## Keywords
+% lorem ipsum
+
+## Word Count
+lorem ipsum
+\newpage
+
+## Rationale
+sample
+
+## Objectives
+sample
+
+## Methods
+sample
+
+## Results 
+sample
+
+## Conclusions
+sample

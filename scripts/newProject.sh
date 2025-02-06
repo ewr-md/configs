@@ -15,7 +15,8 @@ folders=(
     src/data
     src/features
     src/models
-    src/visualization
+    src/figures
+    src/tables
 )
 
 mkdir "$1"
