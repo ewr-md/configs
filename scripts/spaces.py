@@ -15,7 +15,7 @@ def main():
     start_time = time.time()
 
     number_of_files = len(get_file_list())
-    replace_list = (' ', '-', ',', '_.', '?', '!', '[', ']', '__')
+    replace_list = (' ', '-', ',', '_', '?', '!', '[', ']', '__')
 
     [replace(items) for items in replace_list]
     make_lower()
