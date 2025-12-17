@@ -1,4 +1,19 @@
 # programming
 r
 python
+nvim
 
+#cli
+btop
+htop
+tmux
+fzf
+
+# hyprland
+rofi
+waybar
+
+# office
+libreoffice
+texlive
+thunderbird
