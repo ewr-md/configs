@@ -1,0 +1,77 @@
+---
+title: "cpet_report"
+format: html
+editor: visual
+---
+
+```{r setup, include=FALSE}
+rm(list=ls())
+source('cpet_tools.R')
+source('cpet_values.R')
+```
+
+## Overview
+
+The patient tolerated a maximum workload of `r max_workload` Watts, exercising on a `r mode_of_exercise` for a total of `r exercise_duration` minutes while breathing ambient room air.
+
+BMI: `r BMI` kg/m2
+
+Most recent hemoglobin: `r hgb` (date: `r hgb_date`)
+
+Negative chronotropic medications (per chart review): `r med_neg_inotrope`
+
+## Ventilatory Response
+
+Baseline spirometry is notable for a `r spirometry_extra_text(status_z_score(calc_z_score(fvc, fvc_lln, fvc_pred)))` FVC and `r spirometry_extra_text(status_z_score(calc_z_score(fev1, fev1_lln, fev1_pred)))` FEV1.
+
+Overall impression of spirometry is `r status_spirometry(fvc, fvc_lln, fvc_pred, fev1, fev_lln, fev1_pred, ratio_lln, ratio_pred)`.
+
+Diffusion capacity is `r spirometry_extra_text(status_z_score(calc_z_score(dlco, dlco_lln, dlco_pred)))`.
+
+Maximum predicted minute ventilation (FEV1 of `r fev1` L x 40) is `r fev1 * 40` L/min. Achieved maximum minute ventilation was `r VE` L/min, `r print_predicted(calc_predicted(VE, VE_pred))` of predicted.
+
+Resting tidal volume was `r VTex_rest` liters. This increased to `r VTex_max` liters at peak exercise, which is a `r status_rr_response(rr_rest, rr_max)` response. Respiratory rate at rest was `r rr_rest`/min. This increased to `r rr_max`/min at peak exercise, which is a `r status_rr_response(rr_rest, rr_max)` response.
+
+## Gas Exchange
+
+Maximum oxygen uptake (VO2) was `r vo2_peak` L/min, which is `r print_predicted(calc_predicted(vo2_peak, vo2_pred))` of predicted. This indicates a `r status_vo2(vo2_peak, vo2_pred)`. This is equal to `r vo2_kg` ml/kg/min, suggesting `r status_vo2_kg(vo2_kg)`.
+
+A clear VO2 plateau was {sjc.cpet.present.absent:50364}.
+
+Oxygen saturation was `r spo2_rest`% at rest and `r spo2_max`% at peak exercise; a significant desaturation (\>3%) was `r status_spo2_desat(calc_spo2_desat(spo2_rest, spo2_max))`.
+
+RER at peak exercise was `r RER_max`, reflecting `r status_rer(RER_max)` test.
+
+Maximal PETCO2 was `r status_petco2(PETCO2)`. VE/VCO2 slope was `r status_slope_veco2(slope_veco2)`.
+
+## Circulatory Response
+
+Maximum predicted heart rate was `r hr_pred_peak`/min. Heart rate with peak exercise was `r hr_peak`/min, which was `r print_predicted(calc_predicted(hr_peak, hr_pred_peak))` of predicted.
+
+The chronotropic index of `r round(calc_chronotropic_index(hr_peak, hr_rest, hr_pred_peak), digits = 2)` was `r status_chronotropic_index(calc_chronotropic_index(hr_peak, hr_rest, hr_pred_peak))`.
+
+Resting BP was `r sbp_rest`/`r dbp_rest`, which rose to `r sbp_peak`/`r dbp_peak` at peak exercise. Systolic blood pressure response is `r status_sbp_response(sbp_rest, sbp_peak)`. Diastolic blood pressure response is `r status_dbp_response(dbp_rest, dbp_peak)`.
+
+Anaerobic threshold was verified using the dual methods approach. Anaerobic threshold was achieved at VO2 that was `r status_anaerobic_threshold(is_vo2_at_abnormal(vo2_at, vo2_peak))` (VO2_AT / VO2_max = `r round(calc_predicted(vo2_at, vo2_peak), digits = 2)`, which is greater than or equal to 0.40).
+
+Heart rate-VO2 pattern was {sjc.cpet.hrvo2.pattern:50372}. Oxygen pulse pattern showed {sjc.cpet.o2pulse.pattern:50373}. The maximum oxygen pulse was `r O2pulse_peak` ml/beat, which is `r print_predicted(calc_predicted(O2pulse_peak, O2pulse_pred))` of predicted, which is `r status_o2pulse(is_o2pulse_abnormal(calc_predicted(O2pulse_peak, O2pulse_pred)))`.
+
+## Interpretation
+
+The patient's maximum VO2 was `r print_predicted(calc_predicted(vo2_peak, vo2_pred))` of predicted, which indicates `r status_vo2(vo2_peak, vo2_pred)`. The test was terminated due to `r reason_to_end`.
+
+The test was `r ifelse(is_test_adequate(vo2_at, vo2_peak, VE, VE_pred, spo2_rest, spo2_max, RER_max, hr_peak, hr_pred_peak), 'adequate', 'submaximal')`. This is based on `r status_test_adequate(vo2_at, vo2_peak, VE, VE_pred, spo2_rest, spo2_max, RER_max, hr_peak, hr_pred_peak)`.
+
+A ventilatory limitation to exercise was `r status_ventilatory_limitation(VE, VE_pred)`. The ventilatory response to exercise was `r status_ventilatory_response(rr_rest, rr_max)`.
+
+A gas exchange limitation was `r status_gas_exchange_limitation(spo2_rest, spo2_max, VeCO2_at, dlco, dlco_lln, dlco_pred)`. Evidence of inefficient ventilation was `r status_ventilatory_inefficiency(VeCO2_at, PETCO2)`.
+
+A circulatory limitation to exercise was `r status_vo2_at(vo2_at, vo2_peak)`. The circulatory response to exercise was `r status_circulatory_response(is_o2pulse_abnormal(calc_predicted(O2pulse_peak, O2pulse_pred)), is_ci_abnormal(calc_chronotropic_index(hr_peak, hr_rest, hr_pred_peak)))`. The systolic blood pressure response was `r status_sbp_response(sbp_rest, sbp_peak)`. The diastolic blood pressure response was `r status_dbp_response(dbp_rest, dbp_peak)`. Clinical or ECG evidence of ischemia: `r ekg`.
+
+## Summary
+
+Cardiopulmonary exercise testing showed `r status_vo2(vo2_peak, vo2_pred)`.
+
+The primary exercise limitation was {sjc.cpet.limit.type:50384}. There was a secondary {sjc.cpet.limit.type:50384} limitation to exercise.
+
+The presence of {sjc.cpet.abn.resp:50385} during exercise likely contributes to the patient's sensation of dyspnea.

@@ -1,0 +1,2 @@
+lastname,firstname,dob,bmi,hgb,hgb_date,med_neg_inotrope,slope_veco2,fvc,fvc_lln,fvc_pred,fev1,fev1_lln,fev1_pred,ratio_lln,ratio_pred,dlco,dlco_lln,dlco_pred,vo2_kg,vo2_at,vo2_peak,vo2_pred,max_workload,hr_rest,hr_peak,hr_pred_peak,o2pulse_peak,o2pulse_pred,VE,VE_pred,VTex_rest,VTex_max,rr_rest,rr_max,RER_at,RER_max,spo2_rest,spo2_max,VeCO2_at,PETCO2,mode_of_exercise,reason_to_end,exercise_duration,sbp_rest,dbp_rest,sbp_peak,dbp_peak,ekg
+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,22,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48
