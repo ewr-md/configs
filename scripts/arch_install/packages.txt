@@ -12,6 +12,8 @@ fzf
 # hyprland
 rofi
 waybar
+hypr
+hyprpaper
 
 # office
 libreoffice
