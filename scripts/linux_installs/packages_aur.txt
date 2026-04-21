@@ -1,0 +1,6 @@
+# CLI tools
+exa
+librewolf-bin
+
+# research
+github-desktop-bin

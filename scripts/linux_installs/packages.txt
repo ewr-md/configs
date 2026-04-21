@@ -1,0 +1,44 @@
+# CLI tools
+yay
+pacsek
+btop
+htop
+tmux
+kitty
+zsh
+nmcli
+
+# research programs
+r
+rstudio-desktop-bin
+python
+micromamba
+boinc
+git
+gitui
+
+
+# text processors
+vim
+nvim
+emacs
+
+# document creation
+texlive
+texstudio
+libreoffice-fresh
+
+# personal programs
+newsboat
+
+# image processing
+gimp
+
+# file viewers
+evince
+zathura
+
+# internet browsing
+torbrowser-launcher
+links
+thunderbird
